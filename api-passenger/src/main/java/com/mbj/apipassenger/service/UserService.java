@@ -20,7 +20,6 @@ public class UserService {
     public ResponseResult getUserByAccessToken(String accessToken){
 
         log.info("accessToken:" + accessToken);
-
         // 解析accessToken，拿到手机号
 
         // 根据手机号查询用户信息
