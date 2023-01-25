@@ -43,6 +43,12 @@
             <version>2.4</version>
             <classifier>jdk15</classifier>
         </dependency>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.14.0</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>

@@ -1,11 +1,15 @@
 package com.mbj.apipassenger.service;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.mbj.apipassenger.remote.ServicePassengerUserClient;
 import com.mbj.apipassenger.remote.ServiceVerificationcodeClient;
 import com.mbj.internalcommmon.constant.CommonStatusEnum;
+import com.mbj.internalcommmon.constant.IdentityConstant;
 import com.mbj.internalcommmon.dto.ResponseResult;
+import com.mbj.internalcommmon.request.VerificationCodeDTO;
 import com.mbj.internalcommmon.response.NumberCodeResponse;
 import com.mbj.internalcommmon.response.TokenResponse;
+import com.mbj.internalcommmon.util.JwtUtils;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +32,9 @@ public class VerificationCodeService {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+    private ServicePassengerUserClient servicePassengerUserClient;
 
     // 乘客验证码前缀
     private String verificationCodePrefix = "passenger-verification-code-";
@@ -81,8 +88,13 @@ public class VerificationCodeService {
         }
 
         // 判断原来是否有用户，并进行对应的处理
+        VerificationCodeDTO verificationCodeDTO = new VerificationCodeDTO();
+        verificationCodeDTO.setPassengerPhone(passengerPhone);
+        servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
 
         // 颁发令牌token
+        String token = JwtUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY);
+
 
         // 响应
         TokenResponse tokenResponse = new TokenResponse();
