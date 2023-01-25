@@ -1,5 +1,7 @@
 package com.mbj.servicepassengeruser.service;
 
+import com.mbj.internalcommmon.constant.CommonStatusEnum;
+import com.mbj.internalcommmon.dto.PassengerUser;
 import com.mbj.internalcommmon.dto.ResponseResult;
 import com.mbj.servicepassengeruser.mapper.PassengerUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +25,12 @@ public class UserService {
     private PassengerUserMapper passengerUserMapper;
 
     public ResponseResult loginOrRegister(String passengerPhone){
+
         // 根据手机号查询用户信息
         Map<String,Object> map = new HashMap<>();
         map.put("passenger_phone",passengerPhone);
         List<PassengerUser> passengerUsers = passengerUserMapper.selectByMap(map);
-        System.out.println(passengerUsers);
+
         // 判断用户信息是否存在
         if(passengerUsers.size() == 0){
             // 如果不存在，插入用户信息
@@ -42,7 +45,24 @@ public class UserService {
             passengerUser.setGmtModified(now);
             passengerUserMapper.insert(passengerUser);
         }
-
         return ResponseResult.success();
+    }
+
+    /**
+     * 根据手机号查询用户信息
+     * @param passengerPhone
+     * @return
+     */
+    public ResponseResult getUserByPhone(String passengerPhone){
+        // 根据手机号查询用户信息
+        Map<String,Object> map = new HashMap<>();
+        map.put("passenger_phone",passengerPhone);
+        List<PassengerUser> passengerUsers = passengerUserMapper.selectByMap(map);
+        if (passengerUsers.size() == 0){
+            return ResponseResult.fail(CommonStatusEnum.USER_NOT_EXISTS.getCode(),CommonStatusEnum.USER_NOT_EXISTS.getValue());
+        }else {
+            PassengerUser passengerUser = passengerUsers.get(0);
+            return ResponseResult.success(passengerUser);
+        }
     }
 }

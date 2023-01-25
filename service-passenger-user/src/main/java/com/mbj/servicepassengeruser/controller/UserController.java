@@ -4,9 +4,7 @@ import com.mbj.internalcommmon.dto.ResponseResult;
 import com.mbj.internalcommmon.request.VerificationCodeDTO;
 import com.mbj.servicepassengeruser.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: mbj
@@ -25,6 +23,11 @@ public class UserController {
         String passengerPhone = verificationCodeDTO.getPassengerPhone();
         System.out.println(passengerPhone);
         return userService.loginOrRegister(passengerPhone);
+    }
+
+    @GetMapping("/user/{phone}")
+    public ResponseResult getUser(@PathVariable("phone") String phone){
+        return userService.getUserByPhone(phone);
     }
 
 }
