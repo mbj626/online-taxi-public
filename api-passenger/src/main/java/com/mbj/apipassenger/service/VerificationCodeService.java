@@ -95,10 +95,9 @@ public class VerificationCodeService {
         // 颁发令牌token
         String token = JwtUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY);
 
-
         // 响应
         TokenResponse tokenResponse = new TokenResponse();
-        tokenResponse.setToken("token value");
+        tokenResponse.setToken(token);
         return ResponseResult.success(tokenResponse);
     }
 }

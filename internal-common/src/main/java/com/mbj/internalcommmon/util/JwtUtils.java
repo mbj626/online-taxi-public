@@ -62,7 +62,7 @@ public class JwtUtils {
 
 
     public static void main(String[] args) {
-        String s = generatorToken("19935432804","2");
+        String s = generatorToken("19935432804","1");
         System.out.println(s);
         TokenResult tokenResult = parseToken(s);
         System.out.println(tokenResult.getPhone());
