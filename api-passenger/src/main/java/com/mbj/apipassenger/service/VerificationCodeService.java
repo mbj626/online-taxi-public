@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.mbj.apipassenger.remote.ServiceVerificationcodeClient;
 import com.mbj.internalcommmon.dto.ResponseResult;
 import com.mbj.internalcommmon.response.NumberCodeResponse;
+import com.mbj.internalcommmon.response.TokenResponse;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -29,6 +30,11 @@ public class VerificationCodeService {
     // 乘客验证码前缀
     private String verificationCodePrefix = "passenger-verification-code-";
 
+    /**
+     * 生成验证码
+     * @param passengerPhone
+     * @return
+     */
     public ResponseResult generatorCode(String passengerPhone){
         // 调用验证码服务，获取验证码
         System.out.println("调用验证码服务，获取验证码");
@@ -46,4 +52,24 @@ public class VerificationCodeService {
         return ResponseResult.success();
     }
 
+    /**
+     * 校验验证码
+     * @param passengerPhone 手机号
+     * @param verificationCode 验证码
+     * @return
+     */
+    public ResponseResult checkCode(String passengerPhone,String verificationCode){
+        // 根据手机号去Redis读取验证码
+
+        // 校验验证码
+
+        // 判断原来是否有用户，并进行对应的处理
+
+        // 颁发令牌token
+
+        // 响应
+        TokenResponse tokenResponse = new TokenResponse();
+        tokenResponse.setToken("token value");
+        return ResponseResult.success(tokenResponse);
+    }
 }

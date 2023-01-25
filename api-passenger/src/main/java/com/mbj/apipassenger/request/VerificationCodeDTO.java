@@ -1,20 +1,18 @@
 package com.mbj.apipassenger.request;
 
+import lombok.Data;
+
 /**
  * @Author: mbj
  * @CreateTime: 2023-01-25 14:23
  * @Description:
  * @Version:
  */
+@Data
 public class VerificationCodeDTO {
 
     private String passengerPhone;
 
-    public String getPassengerPhone() {
-        return passengerPhone;
-    }
+    private String verificationCode;
 
-    public void setPassengerPhone(String passengerPhone) {
-        this.passengerPhone = passengerPhone;
-    }
 }
