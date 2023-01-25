@@ -24,7 +24,6 @@ public class VerificationCodeController {
     public ResponseResult VerificationCode(@RequestBody VerificationCodeDTO verificationCodeDTO){
         String passengerPhone = verificationCodeDTO.getPassengerPhone();
         System.out.println(passengerPhone);
-        String code = verificationCodeService.generatorCode(passengerPhone);
-        return ResponseResult.success(code);
+        return verificationCodeService.generatorCode(passengerPhone);
     }
 }
