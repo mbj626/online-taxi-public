@@ -2,6 +2,7 @@ package com.mbj.apipassenger.controller;
 
 import com.mbj.apipassenger.request.VerificationCodeDTO;
 import com.mbj.apipassenger.service.VerificationCodeService;
+import com.mbj.internalcommmon.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,9 +21,10 @@ public class VerificationCodeController {
     VerificationCodeService verificationCodeService;
 
     @GetMapping("/verification-code")
-    public String VerificationCode(@RequestBody VerificationCodeDTO verificationCodeDTO){
+    public ResponseResult VerificationCode(@RequestBody VerificationCodeDTO verificationCodeDTO){
         String passengerPhone = verificationCodeDTO.getPassengerPhone();
         System.out.println(passengerPhone);
-        return verificationCodeService.generatorCode(passengerPhone);
+        String code = verificationCodeService.generatorCode(passengerPhone);
+        return ResponseResult.success(code);
     }
 }
