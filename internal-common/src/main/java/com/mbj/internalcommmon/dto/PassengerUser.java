@@ -1,4 +1,4 @@
-package com.mbj.servicepassengeruser.dto;
+package com.mbj.internalcommmon.dto;
 
 import lombok.Data;
 
@@ -22,6 +22,8 @@ public class PassengerUser {
     private String passengerPhone;
 
     private String passengerName;
+
+    private String profilePhoto;
 
     private byte passengerGender;
 

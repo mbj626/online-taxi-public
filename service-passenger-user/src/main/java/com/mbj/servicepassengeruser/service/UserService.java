@@ -1,12 +1,9 @@
 package com.mbj.servicepassengeruser.service;
 
 import com.mbj.internalcommmon.dto.ResponseResult;
-import com.mbj.internalcommmon.request.VerificationCodeDTO;
-import com.mbj.servicepassengeruser.dto.PassengerUser;
 import com.mbj.servicepassengeruser.mapper.PassengerUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
