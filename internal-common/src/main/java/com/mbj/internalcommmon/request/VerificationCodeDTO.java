@@ -1,4 +1,4 @@
-package com.mbj.apipassenger.request;
+package com.mbj.internalcommmon.request;
 
 import lombok.Data;
 

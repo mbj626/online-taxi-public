@@ -16,6 +16,7 @@
     <modules>
         <module>api-passenger</module>
         <module>internal-common</module>
+        <module>service-passenger-user</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -25,6 +26,12 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.mbj</groupId>
+            <artifactId>internal-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
