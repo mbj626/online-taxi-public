@@ -1,5 +1,6 @@
 package com.mbj.apipassenger.controller;
 
+import com.mbj.apipassenger.remote.ServicePriceClient;
 import com.mbj.apipassenger.service.ForecastPriceService;
 import com.mbj.internalcommmon.dto.ResponseResult;
 import com.mbj.internalcommmon.request.ForecastPriceDTO;
@@ -28,8 +29,7 @@ public class ForecastPriceController {
         String depLatitude = forecastPriceDTO.getDepLatitude();
         String destLongitude = forecastPriceDTO.getDestLongitude();
         String destLatitude = forecastPriceDTO.getDestLatitude();
-        forecastPriceService.forecastPrice(depLongitude, depLatitude, destLongitude, destLatitude);
-        return ResponseResult.success();
+        return forecastPriceService.forecastPrice(depLongitude, depLatitude, destLongitude, destLatitude);
     }
 
 }
