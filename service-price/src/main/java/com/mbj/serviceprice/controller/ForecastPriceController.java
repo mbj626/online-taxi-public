@@ -1,9 +1,8 @@
-package com.mbj.apipassenger.controller;
+package com.mbj.serviceprice.controller;
 
-import com.mbj.apipassenger.service.ForecastPriceService;
 import com.mbj.internalcommmon.dto.ResponseResult;
 import com.mbj.internalcommmon.request.ForecastPriceDTO;
-import lombok.extern.slf4j.Slf4j;
+import com.mbj.serviceprice.service.ForecastPriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,12 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Author: mbj
- * @CreateTime: 2023-01-26 20:12
+ * @CreateTime: 2023-01-26 20:36
  * @Description:
  * @Version:
  */
 @RestController
-@Slf4j
 public class ForecastPriceController {
 
     @Autowired
@@ -28,7 +26,7 @@ public class ForecastPriceController {
         String depLatitude = forecastPriceDTO.getDepLatitude();
         String destLongitude = forecastPriceDTO.getDestLongitude();
         String destLatitude = forecastPriceDTO.getDestLatitude();
-        forecastPriceService.forecastPrice(depLongitude, depLatitude, destLongitude, destLatitude);
+        forecastPriceService.forecastPrice(depLongitude,depLatitude,destLongitude,destLatitude);
         return ResponseResult.success();
     }
 
