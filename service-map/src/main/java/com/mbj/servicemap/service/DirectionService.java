@@ -32,6 +32,7 @@ public class DirectionService {
     public ResponseResult driving(String depLongitude, String depLatitude, String destLongitude, String destLatitude){
         // 调用第三方接口
         DirectionResponse direction = mapDirectionClient.direction(depLongitude, depLatitude, destLongitude, destLatitude);
+
         return ResponseResult.success(direction);
     }
 
