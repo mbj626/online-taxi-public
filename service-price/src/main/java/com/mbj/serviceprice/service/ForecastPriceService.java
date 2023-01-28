@@ -6,7 +6,7 @@ import com.mbj.internalcommmon.dto.ResponseResult;
 import com.mbj.internalcommmon.request.ForecastPriceDTO;
 import com.mbj.internalcommmon.response.DirectionResponse;
 import com.mbj.internalcommmon.response.ForecastPriceResponse;
-import com.mbj.internalcommmon.util.BigDecimalUtils;
+import com.mbj.internalcommmon.response.util.BigDecimalUtils;
 import com.mbj.serviceprice.mapper.PriceRuleMapper;
 import com.mbj.serviceprice.remote.ServiceMapClient;
 import lombok.extern.slf4j.Slf4j;
