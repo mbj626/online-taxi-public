@@ -1,6 +1,10 @@
 package com.mbj.apidriver.controller;
 
+import com.mbj.apidriver.service.CarService;
+import com.mbj.apidriver.service.DriverCarBindingRelationshipService;
 import com.mbj.apidriver.service.DriverUserService;
+import com.mbj.internalcommmon.dto.Car;
+import com.mbj.internalcommmon.dto.DriverCarBindingRelationship;
 import com.mbj.internalcommmon.dto.DriverUser;
 import com.mbj.internalcommmon.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +24,9 @@ public class DriverUserController {
 
     @Autowired
     private DriverUserService driverUserService;
+
+    @Autowired
+    private CarService carService;
 
     /**
      * 添加司机
@@ -42,4 +49,16 @@ public class DriverUserController {
         driverUserService.updateDriverUser(driverUser);
         return ResponseResult.success();
     }
+
+    /**
+     * 添加车辆
+     * @param car
+     * @return
+     */
+    @PostMapping("/car")
+    public ResponseResult addCar(@RequestBody Car car){
+        carService.addCar(car);
+        return ResponseResult.success();
+    }
+
 }
