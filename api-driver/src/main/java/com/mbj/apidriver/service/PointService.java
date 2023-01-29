@@ -6,7 +6,6 @@ import com.mbj.internalcommmon.dto.Car;
 import com.mbj.internalcommmon.dto.ResponseResult;
 import com.mbj.internalcommmon.request.ApiDriverPointRequest;
 import com.mbj.internalcommmon.request.PointRequest;
-import com.mbj.internalcommmon.response.DriverUserExistsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

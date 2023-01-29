@@ -4,7 +4,6 @@ import com.mbj.apidriver.service.UserService;
 import com.mbj.internalcommmon.dto.DriverUser;
 import com.mbj.internalcommmon.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

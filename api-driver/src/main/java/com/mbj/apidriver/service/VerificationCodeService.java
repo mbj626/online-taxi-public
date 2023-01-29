@@ -7,7 +7,6 @@ import com.mbj.internalcommmon.constant.DriverConstant;
 import com.mbj.internalcommmon.constant.IdentityConstant;
 import com.mbj.internalcommmon.constant.TokenConstant;
 import com.mbj.internalcommmon.dto.ResponseResult;
-import com.mbj.internalcommmon.request.VerificationCodeDTO;
 import com.mbj.internalcommmon.response.DriverUserExistsResponse;
 import com.mbj.internalcommmon.response.NumberCodeResponse;
 import com.mbj.internalcommmon.response.TokenResponse;
