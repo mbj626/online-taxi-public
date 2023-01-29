@@ -12,18 +12,25 @@ import java.io.Serializable;
  */
 @Data
 public class PriceRule {
-
     private String cityCode;
-    
+
     private String vehicleType;
-    
+
     private Double startFare;
-    
+
     private Integer startMile;
-    
+
     private Double unitPricePerMile;
-    
+
     private Double unitPricePerMinute;
+
+    private Integer fareVersion;
+
+    /**
+     * 运价类型编码
+     */
+    private String fareType;
+
 
 }
 

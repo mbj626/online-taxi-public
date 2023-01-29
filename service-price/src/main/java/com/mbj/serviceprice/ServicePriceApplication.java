@@ -1,4 +1,4 @@
-package com.mbj.serviceorder;
+package com.mbj.serviceprice;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

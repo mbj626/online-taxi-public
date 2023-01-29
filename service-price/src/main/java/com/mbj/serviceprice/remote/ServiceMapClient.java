@@ -1,4 +1,4 @@
-package com.mbj.serviceorder.remote;
+package com.mbj.serviceprice.remote;
 
 import com.mbj.internalcommmon.dto.ResponseResult;
 import com.mbj.internalcommmon.request.ForecastPriceDTO;

@@ -2,7 +2,6 @@ package com.mbj.servicedriveruser.service;
 
 import com.mbj.internalcommmon.dto.DriverUserWorkStatus;
 import com.mbj.internalcommmon.dto.ResponseResult;
-import com.mbj.servicedriveruser.mapper.DriverUserMapper;
 import com.mbj.servicedriveruser.mapper.DriverUserWorkStatusMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

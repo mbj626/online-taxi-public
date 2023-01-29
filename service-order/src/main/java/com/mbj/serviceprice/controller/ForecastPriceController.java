@@ -1,8 +1,8 @@
-package com.mbj.serviceorder.controller;
+package com.mbj.serviceprice.controller;
 
 import com.mbj.internalcommmon.dto.ResponseResult;
 import com.mbj.internalcommmon.request.ForecastPriceDTO;
-import com.mbj.serviceorder.service.ForecastPriceService;
+import com.mbj.serviceprice.service.ForecastPriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

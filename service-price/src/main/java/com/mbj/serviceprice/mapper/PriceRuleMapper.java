@@ -1,4 +1,4 @@
-package com.mbj.serviceorder.mapper;
+package com.mbj.serviceprice.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mbj.internalcommmon.dto.PriceRule;

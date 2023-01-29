@@ -1,6 +1,6 @@
 package com.mbj.apidriver.controller;
 
-import com.mbj.apidriver.service.OrderService;
+import com.mbj.apidriver.service.ServiceOrderService;
 import com.mbj.internalcommmon.dto.ResponseResult;
 import com.mbj.internalcommmon.request.OrderRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
 
     @Autowired
-    OrderService orderService;
+    ServiceOrderService orderService;
 
     /**
      * 创建订单、下单

@@ -1,4 +1,4 @@
-package com.mbj.serviceorder.service;
+package com.mbj.serviceprice.service;
 
 import com.mbj.internalcommmon.constant.CommonStatusEnum;
 import com.mbj.internalcommmon.dto.PriceRule;
@@ -7,8 +7,8 @@ import com.mbj.internalcommmon.request.ForecastPriceDTO;
 import com.mbj.internalcommmon.response.DirectionResponse;
 import com.mbj.internalcommmon.response.ForecastPriceResponse;
 import com.mbj.internalcommmon.util.BigDecimalUtils;
-import com.mbj.serviceorder.mapper.PriceRuleMapper;
-import com.mbj.serviceorder.remote.ServiceMapClient;
+import com.mbj.serviceprice.mapper.PriceRuleMapper;
+import com.mbj.serviceprice.remote.ServiceMapClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
