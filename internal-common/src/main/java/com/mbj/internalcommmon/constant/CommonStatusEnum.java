@@ -48,6 +48,7 @@ public enum CommonStatusEnum {
 
     CAR_BIND_EXIST(1504,"车辆已经被绑定了，请勿重复绑定"),
 
+
     /**
      * 成功
      */
@@ -56,8 +57,7 @@ public enum CommonStatusEnum {
     /**
      * 失败
      */
-    FAIL(0,"fail")
-    ;
+    FAIL(0,"fail");
 
     @Getter
     private int code;

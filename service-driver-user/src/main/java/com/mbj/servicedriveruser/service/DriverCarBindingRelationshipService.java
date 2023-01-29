@@ -4,11 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.mbj.internalcommmon.constant.CommonStatusEnum;
 import com.mbj.internalcommmon.constant.DriverConstant;
 import com.mbj.internalcommmon.dto.DriverCarBindingRelationship;
-import com.mbj.internalcommmon.dto.DriverUser;
 import com.mbj.internalcommmon.dto.ResponseResult;
-import com.mbj.servicedriveruser.mapper.CarMapper;
 import com.mbj.servicedriveruser.mapper.DriverCarBindingRelationshipMapper;
-import com.mbj.servicedriveruser.mapper.DriverUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

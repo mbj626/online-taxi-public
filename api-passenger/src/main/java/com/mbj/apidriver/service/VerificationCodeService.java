@@ -9,8 +9,8 @@ import com.mbj.internalcommmon.dto.ResponseResult;
 import com.mbj.internalcommmon.request.VerificationCodeDTO;
 import com.mbj.internalcommmon.response.NumberCodeResponse;
 import com.mbj.internalcommmon.response.TokenResponse;
-import com.mbj.internalcommmon.response.util.JwtUtils;
-import com.mbj.internalcommmon.response.util.RedisPrefixUtils;
+import com.mbj.internalcommmon.util.JwtUtils;
+import com.mbj.internalcommmon.util.RedisPrefixUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -49,7 +49,7 @@ public class VerificationCodeService {
         int numberCode = numberCodeResponse.getData().getNumberCode();
 
         // key,value,过期时间
-        String key = RedisPrefixUtils.generatorKeyByPhone(passengerPhone);
+        String key = RedisPrefixUtils.generatorKeyByPhone(passengerPhone,IdentityConstant.PASSENGER_IDENTITY);
         // 存入redis
         stringRedisTemplate.opsForValue().set(key,numberCode+"",2, TimeUnit.MINUTES);
 
@@ -69,7 +69,7 @@ public class VerificationCodeService {
         // 根据手机号去Redis读取验证码
 
         // 生成key 根据key获取value
-        String key = RedisPrefixUtils.generatorKeyByPhone(passengerPhone);
+        String key = RedisPrefixUtils.generatorKeyByPhone(passengerPhone,IdentityConstant.PASSENGER_IDENTITY);
         String codeRedis = stringRedisTemplate.opsForValue().get(key);
 
         // 校验验证码

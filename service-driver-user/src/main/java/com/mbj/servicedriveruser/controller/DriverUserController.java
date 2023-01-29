@@ -1,20 +1,12 @@
 package com.mbj.servicedriveruser.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mbj.internalcommmon.dto.Car;
+import com.mbj.internalcommmon.constant.DriverConstant;
 import com.mbj.internalcommmon.dto.DriverUser;
 import com.mbj.internalcommmon.dto.ResponseResult;
+import com.mbj.internalcommmon.response.DriverUserExistsResponse;
 import com.mbj.servicedriveruser.service.DriverUserService;
-import net.sf.json.JSON;
-import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.io.IOException;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * (DriverUser)表控制层
@@ -28,28 +20,59 @@ public class DriverUserController {
     @Autowired
     private DriverUserService driverUserService;
 
+    /**
+     * 新增司机
+     * @param driverUser
+     * @return
+     */
     @PostMapping("/user")
     public ResponseResult addDriverUser(@RequestBody DriverUser driverUser){
         driverUserService.addDriverUser(driverUser);
         return ResponseResult.success();
     }
 
+    /**
+     * 修改司机
+     * @param driverUser
+     * @return
+     */
     @PutMapping("/user")
     public ResponseResult updateDriverUser(@RequestBody DriverUser driverUser){
         driverUserService.updateDriverUser(driverUser);
         return ResponseResult.success();
     }
-    public static void main(String[] args) throws JsonProcessingException {
-        Car car = new Car();
-        ObjectMapper mapper = new ObjectMapper();
-                 // Convert object to JSON string
-                String jsonStr = "";
-                 try {
-                          jsonStr =  mapper.writeValueAsString(car);
-                    } catch (IOException e) {
-                         throw e;
-                     }
-        System.out.println(JSONObject.fromObject(car).toString());
+
+    /**
+     * 查询司机
+     * @param driverPhone
+     * @return
+     */
+    @GetMapping("/check-driver/{driverPhone}")
+    public ResponseResult<DriverUserExistsResponse> getDriverUser(@PathVariable("driverPhone") String driverPhone){
+        ResponseResult<DriverUser> driverUserByPhone = driverUserService.getDriverUserByPhone(driverPhone);
+        int isExists = DriverConstant.DRIVER_EXISTS;
+        DriverUserExistsResponse driverUserExistsResponse = new DriverUserExistsResponse();
+        if (driverUserByPhone.getData() == null){
+            isExists = DriverConstant.DRIVER_NOT_EXISTS;
+            driverUserExistsResponse.setDriverPhone(driverPhone);
+        }else {
+            driverUserExistsResponse.setDriverPhone(driverUserByPhone.getData().getDriverPhone());
+        }
+        driverUserExistsResponse.setIsExists(isExists);
+        return ResponseResult.success(driverUserExistsResponse);
     }
+
+//    public static void main(String[] args) throws JsonProcessingException {
+//        Car car = new Car();
+//        ObjectMapper mapper = new ObjectMapper();
+//                 // Convert object to JSON string
+//                String jsonStr = "";
+//                 try {
+//                          jsonStr =  mapper.writeValueAsString(car);
+//                    } catch (IOException e) {
+//                         throw e;
+//                     }
+//        System.out.println(JSONObject.fromObject(car).toString());
+//    }
 }
 

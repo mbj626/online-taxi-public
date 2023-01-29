@@ -21,8 +21,7 @@ public class CarService {
     ServiceDriverUserClient serviceDriverUserClient;
 
     public ResponseResult addCar(Car car){
-        serviceDriverUserClient.addCar(car);
-        return ResponseResult.success();
+        return  serviceDriverUserClient.addCar(car);
     }
 
 }

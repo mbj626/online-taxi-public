@@ -4,7 +4,7 @@ import com.mbj.apidriver.remote.ServicePassengerUserClient;
 import com.mbj.internalcommmon.dto.PassengerUser;
 import com.mbj.internalcommmon.dto.ResponseResult;
 import com.mbj.internalcommmon.dto.TokenResult;
-import com.mbj.internalcommmon.response.util.JwtUtils;
+import com.mbj.internalcommmon.util.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

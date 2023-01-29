@@ -33,7 +33,7 @@ public class ResponseResult<T> {
      * @param <T>
      * @return
      */
-    public static <T> ResponseResult success(T data){
+    public static <T> ResponseResult<T> success(T data){
         return new ResponseResult().setCode(CommonStatusEnum.SUCCESS.getCode()).setMessage(CommonStatusEnum.SUCCESS.getValue()).setData(data);
     }
 

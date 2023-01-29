@@ -19,6 +19,31 @@ public class AmapConstant {
     public static final String DISTRICT_URL = "https://restapi.amap.com/v3/config/district";
 
     /**
+     * 新增服务
+     */
+    public static final String SERVICE_URL = "https://tsapi.amap.com/v1/track/service/add";
+
+    /**
+     * 新增终端
+     */
+    public static final String TERMINAL_URL = "https://tsapi.amap.com/v1/track/terminal/add";
+
+    /**
+     * 新增轨迹
+     */
+    public static final String TRACK_ADD = "https://tsapi.amap.com/v1/track/trace/add";
+
+    /**
+     * 轨迹点上传
+     */
+    public static final String POINT_UPLOAD = "https://tsapi.amap.com/v1/track/point/upload";
+
+    /**
+     * 终端搜索
+     */
+    public static final String TERMINAL_AROUNDSEARCH = "https://tsapi.amap.com/v1/track/terminal/aroundsearch";
+
+    /**
      * 路径规划 json key值
      */
     public static final String STATUS = "status";
