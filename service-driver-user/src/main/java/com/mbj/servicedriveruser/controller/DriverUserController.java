@@ -4,6 +4,7 @@ import com.mbj.internalcommmon.constant.DriverConstant;
 import com.mbj.internalcommmon.dto.DriverUser;
 import com.mbj.internalcommmon.dto.ResponseResult;
 import com.mbj.internalcommmon.response.DriverUserExistsResponse;
+import com.mbj.internalcommmon.response.OrderDriverResponse;
 import com.mbj.servicedriveruser.service.DriverUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -62,17 +63,15 @@ public class DriverUserController {
         return ResponseResult.success(driverUserExistsResponse);
     }
 
-//    public static void main(String[] args) throws JsonProcessingException {
-//        Car car = new Car();
-//        ObjectMapper mapper = new ObjectMapper();
-//                 // Convert object to JSON string
-//                String jsonStr = "";
-//                 try {
-//                          jsonStr =  mapper.writeValueAsString(car);
-//                    } catch (IOException e) {
-//                         throw e;
-//                     }
-//        System.out.println(JSONObject.fromObject(car).toString());
-//    }
+    /**
+     * 根据车辆ID查询订单所需要的司机信息
+     * @param carId
+     * @return
+     */
+    @GetMapping("/get-available-driver/{carId}")
+    public ResponseResult<OrderDriverResponse> getAvailableDriver(@PathVariable("carId") Long carId){
+        return driverUserService.getAvailableDriver(carId);
+    }
+
 }
 

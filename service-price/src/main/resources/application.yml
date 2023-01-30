@@ -13,3 +13,14 @@ spring:
     password: root
   application:
     name: service-price
+
+logging:
+  level:
+    com:
+      baomidou:
+        mybatisplus: debug
+
+mybatis-plus:
+  #mapper-locations: classpath*:/mappings/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl

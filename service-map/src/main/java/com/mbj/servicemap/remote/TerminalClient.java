@@ -63,10 +63,10 @@ public class TerminalClient {
                 "&center=" + center +
                 "&radius=" + radius;
 
-        System.out.println("终端搜索请求："+urlBuilder.toString());
+        System.out.println("终端搜索请求："+urlBuilder);
         ResponseEntity<String> forEntity = restTemplate.postForEntity(urlBuilder, null,String.class);
         String body = forEntity.getBody();
-        System.out.println("终端搜索响应："+body.toString());
+        System.out.println("终端搜索响应："+body);
         JSONObject result = JSONObject.fromObject(body);
         JSONObject data = result.getJSONObject("data");
         JSONArray results = data.getJSONArray("results");
@@ -74,14 +74,22 @@ public class TerminalClient {
         for (int i = 0; i < results.size(); i++) {
             TerminalResponse terminalResponse = new TerminalResponse();
             JSONObject jsonObject = results.getJSONObject(i);
+            // desc是carId
             String desc = jsonObject.getString("desc");
             if (desc == null || desc.equals("\"null\"") || StringUtils.isBlank(desc)){
                 continue;
             }
             Long carId = Long.valueOf(desc);
             String tid = jsonObject.getString("tid");
+
+            JSONObject location = jsonObject.getJSONObject("location");
+            String longitude = location.getString("longitude");
+            String latitude = location.getString("latitude");
+
             terminalResponse.setCarId(carId);
             terminalResponse.setTid(tid);
+            terminalResponse.setLongitude(longitude);
+            terminalResponse.setLatitude(latitude);
             terminalResponseList.add(terminalResponse);
         }
         return ResponseResult.success(terminalResponseList);

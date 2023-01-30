@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.mbj.internalcommmon.constant.CommonStatusEnum;
 import com.mbj.internalcommmon.dto.PriceRule;
 import com.mbj.internalcommmon.dto.ResponseResult;
+import com.mbj.internalcommmon.request.PriceRuleIsNewRequest;
 import com.mbj.serviceprice.mapper.PriceRuleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -92,18 +93,34 @@ public class PriceRuleService{
         }
     }
 
-    public ResponseResult<Boolean> isNew(String fareType,Integer fareVersion) {
-        ResponseResult<PriceRule> newestVersion = getNewestVersion(fareType);
+    public ResponseResult<Boolean> isNew(PriceRuleIsNewRequest priceRuleIsNewRequest) {
+        ResponseResult<PriceRule> newestVersion = getNewestVersion(priceRuleIsNewRequest.getFareType());
         if (newestVersion.getCode() == CommonStatusEnum.PRICE_RULE_EMPTY.getCode()){
-            return ResponseResult.fail(CommonStatusEnum.PRICE_RULE_EMPTY.getCode(),CommonStatusEnum.PRICE_RULE_EMPTY.getValue());
+            //return ResponseResult.fail(CommonStatusEnum.PRICE_RULE_EMPTY.getCode(),CommonStatusEnum.PRICE_RULE_EMPTY.getValue());
+            return ResponseResult.success(false);
         }else {
             PriceRule data = newestVersion.getData();
             Integer fareVersionDB = data.getFareVersion();
-            if (fareVersionDB > fareVersion){
+            if (fareVersionDB > priceRuleIsNewRequest.getFareVersion()){
                 return ResponseResult.success(false);
             }else {
                 return ResponseResult.success(true);
             }
         }
+    }
+
+    public ResponseResult<Boolean> isExists(PriceRule priceRule) {
+        String cityCode = priceRule.getCityCode();
+        String vehicleType = priceRule.getVehicleType();
+
+        QueryWrapper<PriceRule> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("city_code",cityCode);
+        queryWrapper.eq("vehicle_type",vehicleType);
+        queryWrapper.orderByDesc("fare_version");
+        List<PriceRule> priceRules = priceRuleMapper.selectList(queryWrapper);
+        if (priceRules.size() > 0){
+            return ResponseResult.success(true);
+        }
+        return ResponseResult.success(false);
     }
 }
